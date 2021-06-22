@@ -1,31 +1,54 @@
-package main;
+package fipc;
 import javax.swing.*;
-import java.awt.*;
-class GUI{
-	
-    public static int getScreenWidth(JFrame frame, Dimension size)
-    {    
-    	int width = (int)size.getWidth(); //Stores the screen width
-            	    	
-    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	//JButton button = new JButton("Click me");
-    	//frame.getContentPane().add(button); // Adds Button to content pane of frame
-    	//System.out.print(resolution);
-    	return width;
-    }
-    public static int getScreenHeight(JFrame frame, Dimension size)
-    {
-        int height = (int)size.getHeight(); //Stores the screen height
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.Scanner;
 
-    	return height;
-    }
-    public static void setWindowSize(JFrame frame, int height, int width)
+public class GUI extends TextField
+{ 
+    public void GUI()
     {
-    	frame.setSize(width, height); //Sets the size of the window 
+    	int height = 0, width;
+    	
+    	Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); //Gets the screen resolution
+    	
+    	JFrame frame = new JFrame("Financial Investment Profit Calculator"); //Title of the window
+    	JPanel panel = new JPanel();
+    	Window Window = new Window(size, frame);
+    	TextField tf = new TextField();
+    	setLayout(null);
+    	//Creates new text fields with 16 columns  	
+    	tf1 = new JTextField(16); 
 
-    }
-    public static void backgroundColor(JFrame frame)
-    {
-    	frame.getContentPane().setBackground(Color.LIGHT_GRAY);
+    	/*
+    	for (JTextField jtf : textFieldsArray)
+    	{
+    		tf.TextField(jtf);
+    	}
+		*/
+    	
+    	//Scratch  swingControlDemo = new Scratch();      
+        //swingControlDemo.showTextFieldDemo();
+    	//Creates new buttons
+    	b1 = new JButton("Calculate"); 
+    	
+        //addActionListener to button
+    	b1.addActionListener(tf);
+        
+    	//Dimension tf1Size = tf1.getPreferredSize();
+    	
+    	//tf1.setBounds(100, 500, tf1Size.width, tf1Size.height);
+
+        //Adds text fields to the window
+    	panel.add(tf1);
+        
+        //Adds button to the window
+        panel.add(b1); 
+    	
+    	frame.add(panel); //Adds the panel to the frame    
+    	
+    	frame.setVisible(true); //Sets if the window is visible
+  
     }
 }
+
